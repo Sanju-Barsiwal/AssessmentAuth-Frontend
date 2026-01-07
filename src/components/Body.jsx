@@ -25,14 +25,8 @@ const Body = () => {
       dispatch(addUser(res.data.data));
     } catch (err) {
       if (err.response?.status === 401) {
-        const protectedRoutes = ['/profile', '/feed'];
-        const currentPath = window.location.pathname;
-        
-        if (protectedRoutes.some(route => currentPath.startsWith(route))) {
-          navigate('/login');
-        }
-      }
-      if (err.response?.status !== 401) {
+        // User can manually go to /login if they want
+      } else {
         console.error('Error fetching user:', err);
       }
     } finally {
