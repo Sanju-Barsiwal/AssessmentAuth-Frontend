@@ -11,7 +11,7 @@ const Body = () => {
   const navigate = useNavigate();
   const userData = useSelector((store) => store.user);
   const [loading, setLoading] = useState(true);
-
+  
   const fetchUser = async () => {
     if (userData) {
       setLoading(false);
@@ -25,14 +25,21 @@ const Body = () => {
       dispatch(addUser(res.data.data));
     } catch (err) {
       if (err.response?.status === 401) {
-        navigate('/login');
+        const protectedRoutes = ['/profile', '/feed'];
+        const currentPath = window.location.pathname;
+        
+        if (protectedRoutes.some(route => currentPath.startsWith(route))) {
+          navigate('/login');
+        }
       }
-      console.error('Error fetching user:', err);
+      if (err.response?.status !== 401) {
+        console.error('Error fetching user:', err);
+      }
     } finally {
       setLoading(false);
     }
   };
-
+  
   useEffect(() => {
     fetchUser();
   }, []);
@@ -50,7 +57,7 @@ const Body = () => {
       </div>
     );
   }
-
+  
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Navbar />
