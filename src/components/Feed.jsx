@@ -1,6 +1,5 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-
 const Feed = () => {
   const user = useSelector((store) => store.user);
 
@@ -22,7 +21,7 @@ const Feed = () => {
         <div className="mb-8 flex justify-center">
           <div className="relative">
             <img
-              src="../public/robot.png"
+              src="/robot.png"
               alt="AI Robot"
               className="w-64 h-64 object-contain drop-shadow-2xl"
             />

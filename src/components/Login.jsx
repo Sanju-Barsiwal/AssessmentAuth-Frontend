@@ -34,26 +34,24 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    try {
-      const res = await axios.post(
-        BASE_URL + '/login',
-        {
-          emailId,
-          password,
-        },
-        {
-          withCredentials: true,
-        },
-      );
-      // Fix: Access res.data.data instead of res.data
-      dispatch(addUser(res.data.data));
-      return navigate('/');
-    } catch (err) {
-      // Fix: Extract error string
-      setError(err?.response?.data?.error || 'Login failed');
-      console.error(err);
-    }
-  };
+  try {
+    const res = await axios.post(
+      BASE_URL + '/login',
+      {
+        emailId,
+        password,
+      },
+      {
+        withCredentials: true,
+      },
+    );
+    dispatch(addUser(res.data.data));
+    return navigate('/');
+  } catch (err) {
+    console.error('Login error:', err.response?.data);
+    setError(err?.response?.data?.error || 'Login failed');
+  }
+};
 
   return (
     <div className="min-h-[calc(100vh-80px)] flex items-center justify-center p-8 bg-gray-50">
