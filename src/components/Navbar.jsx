@@ -29,7 +29,7 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white border-b border-gray-200 px-8 py-4 flex justify-between items-center shadow-sm">
-      <Link to={'/'} className="flex items-center gap-2 no-underline">
+      <Link to={'/feed'} className="flex items-center gap-2 no-underline">
         <h1 className="text-3xl font-extrabold text-gray-900 m-0">
           Assessment
         </h1>

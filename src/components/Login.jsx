@@ -28,7 +28,6 @@ const Login = () => {
       dispatch(addUser(res.data.data));
       return navigate('/feed');
     } catch (err) {
-      // Fix: Extract error string
       setError(err?.response?.data?.error || 'Sign Up failed');
     }
   };
@@ -46,7 +45,7 @@ const Login = () => {
       },
     );
     dispatch(addUser(res.data.data));
-    return navigate('/');
+    return navigate('/feed');
   } catch (err) {
     console.error('Login error:', err.response?.data);
     setError(err?.response?.data?.error || 'Login failed');
