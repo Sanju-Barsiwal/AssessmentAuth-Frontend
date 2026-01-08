@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 import Body from './components/Body';
 import Login from './components/Login';
-import Profile from './components/About';
+import About from './components/About';
 import Feed from './components/Feed';
 
 function App() {
