@@ -12,7 +12,7 @@ function App() {
         <Route path="/" element={<Body />}>
           <Route index element={<Navigate to="/login" replace />} />
           <Route path="login" element={<Login />} />
-          <Route path="profile" element={<Profile />} />
+          <Route path="about" element={<About />} />
           <Route path="feed" element={<Feed />} />
         </Route>
       </Routes>
